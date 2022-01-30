@@ -1,6 +1,8 @@
 <h1>DoTogether</h1>
 <hr> 
 
+**Please note that I reused some code that I wrote for a previous project. I did not use any other sources.**
+
 <h2> To run locally, you need: </h2>
 <ul>
 	<li> MongoDB </li>
