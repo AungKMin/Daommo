@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+
+<html>
+	<head>
+		<!-- Make site responsive on small screens -->
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>DoTogether</title>
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+		<link rel="stylesheet" href="/stylesheets/landing.css">
+		<link rel="stylesheet" href="/stylesheets/main.css">
+	</head>
+	<body>
+
+	<nav class="navbar navbar-default navbar-fixed-top">
+			<div class="container">
+					<div class="navbar-header">
+							<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+								<span class="sr-only">Toggle navigation</span>
+								<span class="icon-bar"></span>
+								<span class="icon-bar"></span>
+								<span class="icon-bar"></span>
+							</button>
+
+							<a class="navbar-brand" href="/">DoTogether</a>
+					</div>
+					<div id="navbar" class="collapse navbar-collapse">
+						<ul class="nav navbar-nav">
+							<!-- <li class="<%= typeof page !== 'undefined' && page === 'home' ? 'active' : '' %>"><a href="/">Home</a></li> -->
+							<li class="<%= typeof page !== 'undefined' && page === 'activities' ? 'active' : '' %>"><a href="/activities">Meeting Notes</a></li>
+							<!-- <li class="<%= typeof page !== 'undefined' && page === 'about' ? 'active' : '' %>"><a href="/about">About</a></li> -->
+							<!-- <li><a href="https://form.jotform.com/zlaskar/form" target="blank">Give us feedback!</a></li> -->
+							<% if (currentUser) { %>
+								<% let uncheckedTotalCount = 0
+								currentUser.conversations.forEach((conversation) => { 
+									uncheckedTotalCount += conversation.numUnchecked																																							
+								})
+								%>
+								<li><a href="/t/entry">Messages <span class="<%= uncheckedTotalCount > 0 ? "notif" : ""%>" ><%= uncheckedTotalCount > 0 ? uncheckedTotalCount : ''%></span></a></li>
+							<% } %>
+						</ul>
+						<ul class="nav navbar-nav navbar-right">
+								<% if(!currentUser){ %>
+										<li class="<%= typeof page !== 'undefined' && page === 'login' ? 'active' : '' %>"><a href="/login">Login</a></li>
+										<li class="<%= typeof page !== 'undefined' && page === 'register' ? 'active' : '' %>"><a href="/register">Sign Up</a></li>
+								<% } else { %>
+									<li><a href="/users/<%=currentUser._id%>">Signed in as <%= currentUser.username %></a></li>
+									<li> <a href="/users/<%=currentUser._id%>">My profile</a> </li>
+									<li><a href="/logout">Logout</a></li>
+								<% } %>
+						</ul>
+					</div>
+			</div>
+	</nav>
+
+	<br><br><br>
+
+	<div class='container'>
+		<% if (error && error.length > 0) { %>
+			<div class="alert alert-danger" role='alert'>
+				<%= error %>
+			</div>
+		<% } %>
+		<% if (success && success.length > 0) { %>
+		<div class="alert alert-success" role='alert'>
+			<%= success %>
+		</div>
+		<% } %>
+	</div>
+
+	<div class="container"> 

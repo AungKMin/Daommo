@@ -1,0 +1,384 @@
+:root { 
+	--yellow: #FEFFD6;
+	--blue: #0096C7; 
+	--brightblue: #00bfff;
+	--red:#F8A98C; 
+	--blue-decimal: 0, 150, 199;
+	--lightgray: #D3D3D3;
+ 	--gray: #808080;	
+	--gray-decimal: 128, 128, 128;
+}
+
+body { 
+	background-color: white; 
+}
+
+h1 { 
+	font-family: georgia;
+}
+
+a { 
+	color: var(--gray);
+}
+
+.thumbnail img { 
+	width: 100%;
+	padding: 0;
+} 
+
+.thumbnail { 
+	padding: 0;
+}
+
+.delete-form { 
+	display : inline;
+}
+
+.title { 
+	text-align: center;
+}
+
+.form-box { 
+	width: 30%;
+	margin: 25px auto;
+} 
+
+html, body { 
+	margin: 0;
+	height: 100%;
+}
+
+.collapsible {
+  background-color: var(--gray);
+  color: white;
+  cursor: pointer;
+  padding: 18px;
+  width: 100%;
+  border: none;
+  text-align: left;
+  outline: none;
+  font-size: 15px;
+}
+
+/* Add a background color to the button if it is clicked on (add the .active class with JS), and when you move the mouse over it (hover) */
+.active, .collapsible:hover {
+  background-color: var(--lightgray);
+}
+
+/* Style the collapsible content. Note: hidden by default */
+.content {
+  padding: 0 18px;
+  display: none;
+  overflow: hidden;
+  background-color: white;
+}
+
+/* Buttons */
+.btn { 
+	color: white
+}
+
+.btn-danger { 
+	background-color: var(--red);
+	border-color: var(--red);
+} 
+
+.btn-success { 
+	background-color: var(--gray);
+	color: white;
+	border-color: var(--gray);
+}
+
+.btn-success:hover { 
+	background-color: var(--lightgray);
+} 
+
+/* Activities page */
+.jumbotron-button { 
+	font-family:georgia; 
+	font-size: 1.5em;
+	background-color: var(--gray); 
+	color: white; 
+}
+
+.jumbotron-button:hover { 
+	background-color: var(--lightgray);
+}
+
+#post { 
+	background-color: var(--blue);
+}
+
+#post:hover { 
+	background-color: var(--brightblue);
+}
+
+.jumbotron-text { 
+	font-family: georgia;
+	font-size: 1.5em;
+	color: white;
+	text-shadow: 1px 1px gray;
+}
+
+.jumbotron-add { 
+	background-color: var(--red);
+}
+
+.jumbotron-group { 
+	background-color: var(--gray); 
+	padding: 1em;
+	border-radius: 4px;
+	margin: 1em;
+}
+
+.jumbotron-label { 
+	font-family: georgia;
+	font-size: 1.2em;
+	color: white; 
+	font-weight: normal;
+}
+
+label { 
+	font-family: georgia;
+}
+
+.page { 
+	background-color: var(--gray); 
+}
+
+.card {
+  transition: 0.3s;
+	border: 0.5em solid var(--gray);
+	background-clip: content-box;	
+	font-family: georgia;
+	word-wrap: break-word;
+}
+
+.card:hover {
+  box-shadow: 1px 5px 10px 1px var(--red);
+	/*background-color: var(--gray); */
+}
+
+.card h2{
+	margin-top: 0.2em;
+	margin-bottom: 0em;
+  font-size: 1.7em;
+  font-weight: bold;
+}
+
+.card h3{
+	margin: 0.7em;
+	font-size: 1.1em;
+	text-decoration: underline;
+}
+
+.card h4 { 
+	font-size: 1em;
+	text-align: left;
+}
+
+.label {
+  background-color: var(--gray);
+  font-size: 1em;
+}
+
+.card p{
+	font-size: 1em;
+	margin: 0;
+	margin-top: 0.7em;
+} 
+
+.posted { 
+	font-style: italic;
+}
+
+.card img { 
+	max-height: 20em;
+}
+
+.card .caption { 
+	text-align: justify;
+	background-color: white;
+}
+
+/*Navbar*/
+.navbar { 
+	background-color: var(--gray); 
+	font-family: georgia;
+}
+
+.navbar-default .navbar-brand { 
+	color: white;
+}
+
+.navbar-default .navbar-brand:hover { 
+	color: var(--red);
+}
+
+.navbar-default .navbar-nav li a { 
+	color: white;
+}
+
+.navbar-default .navbar-nav li a:hover{ 
+	background-color: var(--red);
+}
+
+.navbar-default .navbar-nav .active a { 
+	background-color: white;
+	color: var(--gray);
+} 
+
+.navbar-default .navbar-nav .active a:hover {
+	background-color: var(--red);
+}
+
+/*Footer*/
+.footer a { 
+	color: var(--gray);
+	text-decoration: underline;
+}
+
+/*activities index*/
+.activity-box { 
+	border: 2em solid var(--gray)
+}
+
+.activity-box .caption { 
+	background-color: white;
+	font-family: georgia; 
+}
+
+.activity-box strong { 
+	color: black;
+	text-decoration: underline;
+}
+
+hr { 
+	border-color: var(--red)
+}
+
+.well { 
+	background-color: white;
+	border: 2em solid var(--gray);
+	padding: 9px;
+}
+
+.comment { 
+	font-family: georgia;
+	background-color: rgba(var(--gray-decimal),0.3); 
+	padding: 15px;
+	margin-bottom: 1em;
+}
+
+.comment strong { 
+	color: black;
+	font-style: italic;
+	text-decoration: underline;
+}
+
+.list-group { 
+	background-color: var(--red);
+	padding: 1em;
+}
+
+.list-group-item { 
+	background-color: var(--gray);
+	color: white;
+	text-decoration: none;
+}
+
+.list-group-item:hover { 
+	background-color: var(--lightgray);
+	text-decoration: none;
+}
+
+.lead { 
+	font-size: 3em;
+	font-family: georgia;
+	color: var(--gray)
+}
+
+/*forms*/
+.form-box form { 
+	background-color: var(--red);
+	padding: 1em;
+}
+
+.form-box .form-group { 
+	color: white;
+	background-color: var(--gray);
+	padding: 0.5em;
+}
+
+.form-box .form-group a {
+ 	color: white;	
+}
+
+.form-box .form-group a:hover { 
+	text-decoration: underline;
+	text-decoration-color: white
+}
+
+.form-box .form-group span { 
+	font-weight: bold;
+}
+
+.form-group select, .form-group input[type="text"], .form-group input[type="password"], .form-group input[type="email"], .form-group input[type="file"], .form-group input[type="date"] { 
+	background-color: white; 
+	color: var(--gray);
+}
+
+.form-group input[type="text"] { 
+	background-color: white; 
+	color: var(--gray);
+}
+
+/*Profile*/
+.profile-box { 
+	background-color:var(--gray);
+	padding: 1em 1em 1em 1em;
+	color: white;
+}
+
+.user-box { 
+	background-color: var(--red);
+	padding: 0.5em;
+	color: white;
+}
+
+.user-box h1 { 
+	color: white;
+	padding: 0.5em;
+	background-color: var(--gray);
+}
+
+.user-box .caption { 
+	background-color: var(--gray);
+	padding: 0.5em;
+	color: white;
+}
+
+.profile-activities { 
+	background-color: var(--red);	
+	padding: 0.5em;
+	font-family: georgia;
+}
+
+.profile-activities ul li{ 
+	list-style-type: none;
+	background-color: var(--gray);
+	padding: 0.5em;
+}
+
+.profile-activities ul li a { 
+	color: white;
+}
+
+/*Messages*/
+.notif { 
+	color: black;
+	background-color: var(--red);
+	padding: 0.3em;
+	border-radius: 100%;
+	display: inline;
+}

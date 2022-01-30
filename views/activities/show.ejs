@@ -1,0 +1,66 @@
+<%- include('../partials/header') %>
+
+<div class="container">
+	<div class="row">
+		<div class="col-md-3">
+			<p class="lead">DoTogether</p>
+			<div class="list-group">
+				<a href="/activities"><li class="list-group-item">Go Back to Topics</li></a>
+				<a href="/users/<%=activity.author.id._id%>"><li class="list-group-item">View the author of this topic: <%= activity.author.username %></li></a>
+				<a href="/activities/new"><li class="list-group-item">Post your own topic</li></a>
+			</div>
+		</div>
+		<div class="col-md-9">
+			<div class="thumbnail activity-box">
+				<img src="<%= activity.image %>" onerror="this.src='https://images.unsplash.com/photo-1593007791459-4b05e1158229?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80'" alt='An awesome activity'>
+				<div class="caption">
+					<h2><%= activity.name %></h2> 
+					<% activity.category.forEach(function(category) {%>
+						<h2 class="label label-primary large"><%=category%></h3>
+					<% })%>
+					<h4 class="">Time Estimate: <%=activity.date%></h4>
+					<hr>
+					<p><%= activity.description %></p>
+					<p>
+						<em> Subbmitted by: <a href="/users/<%=activity.author.id._id%>"><img style="height: 40px; width: 40px;display:inline;" src="<%=activity.author.id.avatar%>" onerror="this.src='https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460__340.png'" alt="user profile picture"><strong><%= activity.author.id.firstName + ' ' + activity.author.id.lastName%> (<%= activity.author.username %>)</strong></a>, <%=moment(activity.dateCreated).fromNow()%> </em>
+					<% if (currentUser && !activity.author.id._id.equals(currentUser._id)) { %>
+						<form action="/t/message/new/<%=activity.author.id._id%>" method="POST"> <input class = "btn btn-s btn-success" type="submit" value="Message Author" > </form>
+					<%}%>
+					</p>
+					<% if (currentUser && activity.author.id._id.equals(currentUser._id)) { %>
+							<a class="btn btn-s btn-warning" href="/activities/<%=activity._id%>/edit">Edit Post</a>
+							<form class="delete-form" action='/activities/<%= activity._id %>?_method=DELETE' method='POST' onsubmit="return confirm('Are you sure you want to delete activity?');"> 
+								<input class="btn btn-s btn-danger" type="submit" value="Delete">
+							</form>
+					<% } %>
+				</div>
+			</div>	
+			<div class="well">
+				<div class="text-right">
+					<a class="btn btn-success" href="/activities/<%=activity._id%>/comments/new">Comment</a>  
+				</div>
+				<hr>
+				<% activity.comments.forEach(function (comment) { %>
+					<div class="row">
+						<div class="col-md-12 comment">
+							<a href="/users/<%=comment.author.id%>"><strong> <%= comment.author.username %> </strong></a>
+							<span class="pull-right"><%= moment(comment.dateCreated).fromNow() %></span>	
+							<p> 
+								<%= comment.text %> 
+							</p>
+							<% if (currentUser && comment.author.id.equals(currentUser._id)) { %>
+								<a class="btn btn-xs btn-warning" 
+									href="/activities/<%=activity._id%>/comments/<%=comment._id%>/edit">Edit Comment</a>
+								<form class="delete-form" action="/activities/<%=activity._id%>/comments/<%=comment._id%>?_method=DELETE" method="POST" onsubmit="return confirm('Are you sure you want to delete comment?');">
+									<button class="btn btn-xs btn-danger">Delete</button>
+								</form>
+							<% } %>
+						</div>
+					</div>
+				<% } ) %>
+			</div> 
+		</div>
+	</div>
+</div>
+
+<%- include('../partials/footer') %>
